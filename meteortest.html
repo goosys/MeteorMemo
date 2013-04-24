@@ -1,0 +1,49 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Memo</title>
+</head>
+
+<body>
+  {{>small_layout}}
+</body>
+
+<template name="small_layout">
+<div class="container">
+<div class="row">
+<div class="span12">
+  {{>form}}
+  <hr/>
+  {{>table}}
+</div>
+</div>
+</div>
+</template>
+
+<template name="form">
+<form>
+      <input type="text" name="name" placeholder="HN"/><br/>
+      <textarea name="memo" placeholder="Memo" class="span12"/></textarea>
+      <input type="submit" name="submit" value="memo" class="btn btn-primary"/>
+</form>
+</template>
+
+<template name="table">
+<table class="table table-striped table-bordered">
+<thead>
+  <tr>
+    <th style="width:0.5em;"><br/></th>
+    <th style="width:5em;  ">HN</th>
+    <th style="width:auto; ">Memo</th>
+  </tr>
+</thead>
+<tbody>
+  {{#each memos}}
+  <tr>
+    <td><a href="#" data-rowid="{{_id}}" name="delete"><i class="icon-remove" data-rowid="{{_id}}"></i></a></td>
+    <td>{{name}}</td>
+    <td><pre><code>{{memo}}</code></pre></td>
+  </tr>
+  {{/each}}
+<tbody>
+</table>
+</template>
